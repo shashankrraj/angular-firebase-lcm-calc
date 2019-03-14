@@ -1,10 +1,10 @@
 # Angular Firebase Calculator
 
 STEPS TO RUN: 
-Step 1 : Clone the repository
-Step 2 : NPM INSTALL
-Step 3 : NPM START
-Step 4 : Goto src/app/app.module.ts and add your firebase credentials. Please remember to select the Realtime Databse and change .read and .write values to true.
+* Step 1 : Clone the repository
+* Step 2 : NPM INSTALL
+* Step 3 : NPM START
+* Step 4 : Goto src/app/app.module.ts and add your firebase credentials. Please remember to select the Realtime Databse and change .read and .write values to true.
 
 
 > The goal of this project is to
