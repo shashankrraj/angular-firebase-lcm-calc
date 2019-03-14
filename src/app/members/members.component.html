@@ -1,0 +1,67 @@
+<div class="form-container" id="toolbar">
+    <header [@fallIn]="state">
+      <button (click)="logout()" class="basic-btn">Logout</button>
+      <button *ngIf="memberBool==false" (click)="history()" class="basic-btn">History</button>
+      <button *ngIf="memberBool==true" (click)="goBack()" class="basic-btn">Go Back</button>
+    </header>
+    <div *ngIf="memberBool==true" id="page" [@moveInLeft]="state">
+      <h2>Calculation History</h2><br>
+      <div >
+          <table>
+              <tr>
+                <th>Algorithm</th>
+                <th>Number 1</th>
+                <th>Number 2</th>
+                <th>Result</th>
+              </tr>
+              <tr *ngFor='let res of historyResult '>
+                <td>{{res.algorithm}}</td>
+                <td>{{res.num1}}</td>
+                <td>{{res.num2}}</td>
+                <td>{{res.result}}</td>
+              </tr>
+            </table>
+      </div>
+    </div>
+    
+    <div *ngIf="memberBool==false" id="page" [@moveInLeft]="state">
+      <h2>LCM Calculator</h2><br>
+      <h5>Select your algorithm :</h5>
+      <select [(ngModel)]="selectedAlgo" (ngModelChange)="changeDropdown()" >
+        <option value="Time" [selected]="true">Time</option>
+        <option value="Space">Space</option>
+        <option value="Optimal">Optimal</option>
+      </select>
+      <div *ngIf="selectedAlgo=='Time'">
+      <form #formData='ngForm' (ngSubmit)="lcm_time(formData)">
+      <input type="number" placeholder="Num 1" (ngModel)="num1" name="num1" class="txt" required>
+      <input type="number" placeholder="Num 2" (ngModel)="num2" name="num2" class="txt" required>
+      <button type="submit" [disabled]="!formData.valid" class="basic-btn">Calc</button>
+      <br><br><br><br>
+      <div *ngIf="result"><h3>Result is = {{result}}</h3></div>
+     </form>
+     </div>
+
+     <div *ngIf="selectedAlgo=='Space'">
+      <form #formData2='ngForm' (ngSubmit)="lcm_space(formData2)">
+      <input type="number" placeholder="Num 1" (ngModel)="num1" name="num1" class="txt" required>
+      <input type="number" placeholder="Num 2" (ngModel)="num2" name="num2" class="txt" required>
+      <button type="submit" [disabled]="!formData2.valid" class="basic-btn">Calc</button>
+      <br><br><br><br>
+      <div *ngIf="result"><h3>Result is = {{result}}</h3></div>
+     </form>
+     </div>
+
+     <div *ngIf="selectedAlgo=='Optimal'">
+      <form #formData3='ngForm' (ngSubmit)="lcm_optimal(formData3)">
+      <input type="number" placeholder="Num 1" (ngModel)="num1" name="num1" class="txt" required>
+      <input type="number" placeholder="Num 2" (ngModel)="num2" name="num2" class="txt" required>
+      <button type="submit" [disabled]="!formData3.valid" class="basic-btn">Calc</button>
+      <br><br><br><br>
+      <div *ngIf="result"><h3>Result is = {{result}}</h3></div>
+     </form>
+     </div>
+
+    </div>
+    
+</div>
